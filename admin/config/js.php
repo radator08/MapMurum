@@ -12,7 +12,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<!-- TinyMCE -->
 <script src="js/tinymce/tinymce.min.js"></script>
+
+<!-- Dropzone.js -->
+<script src="js/dropzone.js"></script>
 
 <script>
 	

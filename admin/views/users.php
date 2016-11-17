@@ -1,3 +1,26 @@
+<?php if(isset($opened['id'])) { ?>
+
+	<script>
+		
+		$(document).ready(function() {
+			
+			Dropzone.autoDiscover = false;
+			
+			var myDropzone = new Dropzone("#avatar-dropzone");
+			
+			myDropzone.on("success", function(file) {
+				
+				$("#avatar").load("ajax/avatar.php?id=<?php echo $opened['id']; ?>");
+				
+			});
+			
+		});
+		
+	</script>
+
+<?php } ?>
+
+
 <h1>User Manager</h1>
 
 <div class="row">
@@ -39,6 +62,17 @@
 
 		
 		<form action="index.php?page=users&id=<?php echo $opened['id']; ?>" method="post" role="form">
+			
+			<div id="avatar">
+			
+			<?php if($opened['avatar'] != '') { ?>
+				
+				<div class="avatar-container" style="background-image: url('../uploads/<?php echo $opened['avatar']; ?>')"></div>
+				
+			</div>
+				
+			<?php } ?>
+		
 			
 			<div class="form-group">
 				
@@ -93,8 +127,15 @@
 			<?php if(isset($opened['id'])) { ?>
 				<input type="hidden" name="id" value="<?php echo $opened['id'] ;?>">
 			<?php } ?>
-			
 		</form>
+		
+		<?php if(isset($opened['id'])) { ?>
+			<form action="uploads.php?id=<?php echo $opened['id'] ;?>" class="dropzone" id="avatar-dropzone">
+				
+				<input type="file" name="file">
+				
+			</form>
+		<?php } ?>
 		
 	</div>
 </div>
