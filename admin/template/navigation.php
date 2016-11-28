@@ -5,6 +5,7 @@
 			<li><a href="?page=dashboard">Dashboard</a></li>
 			<li><a href="?page=pages">Pages</a></li>
 			<li><a href="?page=users">Users</a></li>
+			<li><a href="?page=tiles">Tiles</a></li>
 			<li><a href="?page=settings">Settings</a></li>
 			
 		</ul>

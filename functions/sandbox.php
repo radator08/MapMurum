@@ -23,8 +23,19 @@ function get_path() {
   }
 return $path;
 }
+/*
+function get_slug($dbc, $url) {
+	
+	$pos = strrpos($url, '/');
+	$slug = substr($url, $pos + 1);
+	
+	return $slug;
+	
+	
+	
+}
 
 
-
-
+ * 
+ */
 ?>

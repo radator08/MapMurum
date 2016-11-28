@@ -129,6 +129,45 @@
 			}
 			
 		break;
+		
+		case 'tiles':
+		
+			if(isset($_POST['submitted']) == 1) {
+		
+				$first = mysqli_real_escape_string($dbc, $_POST['first']);
+				$middle = mysqli_real_escape_string($dbc, $_POST['middle']);
+				$last = mysqli_real_escape_string($dbc, $_POST['last']);
+				
+				if(isset($_POST['id']) != '') {
+					$action = 'updated';
+					$q = "UPDATE titles SET first = '$first', middle = '$middle', last = '$last', year = '$_POST[year]', t_section = '$_POST[t_section]', t_row = '$_POST[t_row]', t_column = '$_POST[t_column]' WHERE id = $_GET[id]";
+					$r = mysqli_query($dbc, $q);
+				
+				} else {
+					
+					$action = 'added';
+					
+					$q = "INSERT INTO tiles (first, middle, last, year, t_section, t_row, t_column) VALUES ('$first', '$middle', '$last', '$_POST[year]', '$_POST[t_section]', '$_POST[t_row]', '$_POST[t_column]') ";
+					$r = mysqli_query($dbc, $q);
+					
+				}
+				
+				
+				if($r) {
+							
+					$message = '<p class="alert alert-success">Tile was '.$action.'!</p>';
+					
+				} else {
+					
+					$message = '<p class="alert alert-danger">Tile could not be '.$action.' because: '.mysqli_error($dbc).'</p>';
+					$message .= '<p class="alert alert-warning">Query: '.$q.'</p>';
+				
+				}
+			}
+			
+			if(isset($_GET['id'])) { $opened = data_user($dbc, $_GET['id']); }
+	
+		break;
 			
 		default:
 			
