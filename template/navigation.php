@@ -10,8 +10,8 @@
 		
 			<?php nav_main($dbc,$pageid); ?>
 		
-			<li><a href="#">FAQ</a></li>
-			<li><a href="#">Contact</a></li> 
+			<!--<li><a href="#">FAQ</a></li>
+			<li><a href="#">Contact</a></li> -->
 		</ui>
 
 	</div>

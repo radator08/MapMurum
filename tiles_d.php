@@ -128,4 +128,48 @@
         </div>
       </form>
    </div>
+   
+   
+  <div class="message1">
+   	
+   		<h1><font color="#3e7444"><i>Select a tile from the map</i></font></h1>
+   	
+   </div>
+   
+   
+   <div class="button1">
+   	
+   		<button type="button" class="btn btn-default" onclick="location.href = 'index.php'">Go Back</button>
+   	
+   </div>
+
+<style>
+
+
+.button1 { 
+   position: absolute; 
+   width: 100%; /* for IE 6 */
+   left: 580px;
+   top: 450px;
+}
+
+
+.message1 { 
+   position: absolute; 
+   width: 100%; /* for IE 6 */
+   left: 450px;
+   top: 350px;
+}
+	
+
+.row { 
+   position: absolute; 
+   width: 100%; /* for IE 6 */
+   left: 540px;
+   top: 100px;
+}
+	
+	
+</style>
+    
     

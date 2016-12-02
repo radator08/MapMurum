@@ -45,15 +45,27 @@
 	        // or if you want to match just full word so "gogohello" is out use '% $query %' ...OR ... '$query %' ... OR ... '% $query'
 	         
 	        if(mysqli_num_rows($r) > 0){ // if one or more rows are returned do following
+	          ?>
 	             
+	            <div class="message1">
+   	
+   					<h1><font color="#3e7444"><i>Search Results:</i></font></h1>
+   	
+   				</div> 
+   				
+   				 <?php
+   				
 	            while($results = mysqli_fetch_array($r)){
 	            // $results = mysql_fetch_array($raw_results) puts data from database into array, while it's valid it does the loop
 	             
 	             ?>
+	             <div class="list1">
 	            	<a class="list-group-item" href="tile_info.php?t_section=<?php echo $results['t_section']; ?>&t_row=<?php echo $results['t_row']; ?>&t_column=<?php echo $results['t_column']; ?>">
-					<h4 class="list-group-item-heading"><?php echo $results['first']; ?></h4>
+						<h4 class="list-group-item-heading">Name: <?php echo $results['first']." ".$results['middle']." ".$results['last']."  (Year: ".$results['year'].")"; ?></h4>
 					<!--<p class="list-group-item-text"><?php //echo $blurb; ?></p> -->
 					</a>
+				</div>
+				
 	          <?php  }
 	             
 	        }
@@ -66,6 +78,32 @@
 	        echo "Minimum length is ".$min_length;
 	    }
 	?>
+	
+	<div class="button1">
+   	
+   		<button type="button" class="btn btn-default" onclick="location.href = 'index.php'">Go Back</button>
+   	
+   </div>
+   
 </body>
 <html/>
 
+<style>
+	
+.message1 { 
+   position: absolute; 
+   width: 100%; /* for IE 6 */
+   left: 500px;
+   top: -20px;
+}
+
+
+.button1 { 
+   position: absolute; 
+   width: 100%; /* for IE 6 */
+   left: 1200px;
+   top: 5px;
+}
+
+	
+</style>
