@@ -25,7 +25,7 @@ if(isset($_GET['page'])) { #We use $_GET function to change the query dynamicall
 	
 } else {
 
-	$page = 'dashboard'; //Set $pageid equal to 1 or the Home Page
+	$page = 'tiles'; //Set $pageid equal to 1 or the Home Page
 
 }
 

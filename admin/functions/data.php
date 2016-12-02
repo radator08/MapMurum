@@ -32,6 +32,20 @@ function data_user($dbc, $id) {
 	
 }
 
+function data_tile($dbc, $id) {
+	
+	$q = "SELECT * FROM tiles WHERE id = '$id'";
+	$r = mysqli_query($dbc, $q);
+		
+	$data = mysqli_fetch_assoc($r);
+	
+	$data['fullname'] = $data['first'].' '.$data['middle'].' '.$data['last'];
+	$data['fullname_reverse'] = $data['last'].', '.$data['first'].' '.$data['middle'];
+	
+	return $data;
+	
+}
+
 
 function data_page($dbc, $id) {
 	

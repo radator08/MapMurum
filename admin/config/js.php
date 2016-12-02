@@ -50,6 +50,25 @@
 			
 		});
 		
+		$(".btn-delete2").on("click", function() {
+			
+			var selected = $(this).attr("id");
+			var tileid = selected.split("del_").join("");
+			
+			var confirmed = confirm("Are you sure you want to delete this tile?");
+			
+			if(confirmed == true) {
+				
+				$.get("ajax/tiles.php?id="+tileid);
+			
+				$("#tile_"+tileid).remove();
+			}
+			
+			
+			//alert(selected);	
+			
+		});
+		
 	});
  	
  	tinymce.init({

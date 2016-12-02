@@ -19,6 +19,8 @@ if($_POST) {
 		$_SESSION['username'] = $_POST['email'];
 		header('Location: index.php');
 		
+	} else {
+		echo "The credentials you have entered are incorrect.";
 	}
 	
 }

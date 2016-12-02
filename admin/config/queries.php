@@ -2,10 +2,6 @@
 		
 	switch ($page) {
 		
-		case 'dashboard':
-			
-		break;
-		
 		case 'pages':
 			
 			if(isset($_POST['submitted']) == 1) {
@@ -140,7 +136,7 @@
 				
 				if(isset($_POST['id']) != '') {
 					$action = 'updated';
-					$q = "UPDATE titles SET first = '$first', middle = '$middle', last = '$last', year = '$_POST[year]', t_section = '$_POST[t_section]', t_row = '$_POST[t_row]', t_column = '$_POST[t_column]' WHERE id = $_GET[id]";
+					$q = "UPDATE tiles SET first = '$first', middle = '$middle', last = '$last', year = '$_POST[year]', t_section = '$_POST[t_section]', t_row = '$_POST[t_row]', t_column = '$_POST[t_column]' WHERE id = $_GET[id]";
 					$r = mysqli_query($dbc, $q);
 				
 				} else {
@@ -165,7 +161,7 @@
 				}
 			}
 			
-			if(isset($_GET['id'])) { $opened = data_user($dbc, $_GET['id']); }
+			if(isset($_GET['id'])) { $opened = data_tile($dbc, $_GET['id']); }
 	
 		break;
 			

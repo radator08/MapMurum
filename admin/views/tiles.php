@@ -10,30 +10,39 @@
 				<i class="fa fa-plus"></i> New Tiles
 			</a>
 			
-		<!--
+		
 		
 		<?php 
 			
-			$q = "SELECT * FROM tiles ORDER BY first ASC";
+			$q = "SELECT * FROM tiles";
 			$r = mysqli_query($dbc, $q);
 			
 			while($list = mysqli_fetch_assoc($r)) { 
 				
-				$list = data_user($dbc, $list['id']);
+				$list = data_tile($dbc, $list['id']);
 				//$blurb = substr(strip_tags($list['body']), 0, 100);
 				
 			?>
-				
+		<!--	
 			<a class="list-group-item <?php selected($list['id'], $opened['id'], 'active'); ?>" href="index.php?page=tiles&id=<?php echo $list['id']; ?>">
-				<h4 class="list-group-item-heading"><?php echo $list['fullname_reverse']; ?></h4>
+				<h4 class="list-group-item-heading"><?php echo $list['fullname']; ?></h4>
 			</a>
 			
-			
+		-->
+		
+		<div id="tile_<?php echo $list['id']; ?>" class="list-group-item <?php selected($list['id'], $opened['id'], 'active'); ?>" >
+				<h4 class="list-group-item-heading"><?php echo $list['fullname']; ?>
+					<span class="pull-right">
+						<a href="#" id="del_<?php echo $list['id']; ?>" class="btn btn-danger btn-delete2"><i class="fa fa-trash-o"></i></a>
+						<a href="index.php?page=tiles&id=<?php echo $list['id']; ?>" class="btn btn-default"><i class="fa fa-chevron-right"></i></a>
+					</span>
+				</h4>
+			</div>
 				
 		<?php } ?>
 		
 		
-		-->
+		
 			
 		</div>
 		
