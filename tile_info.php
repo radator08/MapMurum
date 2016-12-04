@@ -28,7 +28,7 @@
 
 <div class="image2">
 	
-	<img src="images/seccion_<?php echo $list['t_section']?>.jpg" alt="" height="340"/>
+	<img src="images/seccion_<?php echo $list['t_section']?>.jpg" alt="" height="280"/>
 	
 </div>
 
@@ -118,7 +118,7 @@
  .e { 
    position: absolute; 
    top: 210px; 
-   left: 110px; 
+   left: 105px; 
    width: 100%;
  }
  
