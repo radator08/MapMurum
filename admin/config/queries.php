@@ -134,17 +134,109 @@
 				$middle = mysqli_real_escape_string($dbc, $_POST['middle']);
 				$last = mysqli_real_escape_string($dbc, $_POST['last']);
 				
+				if ($_POST['year'] == '' || $_POST['t_section'] == '' || $_POST['t_row'] == '' || $_POST['t_column'] == '') {
+					
+					$message = '<p class="alert alert-danger">Graduation Year, Section, Row and Column are compulsory fields.  Fill all of them.</p>';
+					break;
+				}
+
+				if($_POST['t_section'] == 'A') {
+					
+					if($_POST['t_row'] < 1 || $_POST['t_row'] > 14 || $_POST['t_column'] < 1 || $_POST['t_column'] > 6) {
+						$message = '<p class="alert alert-danger">This location is outside of the scope of the wall.  For Section A, there are 14 rows and 6 columns.</p>';
+						break;
+					}
+					
+				} 
+				elseif($_POST['t_section'] == 'B') {
+					if($_POST['t_row'] < 1 || $_POST['t_row'] > 14 || $_POST['t_column'] < 1 || $_POST['t_column'] > 20) {
+						$message = '<p class="alert alert-danger">This location is outside of the scope of the wall.  For Section B, there are 14 rows and 20 columns.</p>';
+						break;
+					}
+					
+				}
+				elseif($_POST['t_section'] == 'C') {
+					if($_POST['t_row'] < 1 || $_POST['t_row'] > 14 || $_POST['t_column'] < 1 || $_POST['t_column'] > 31) {
+						$message = '<p class="alert alert-danger">This location is outside of the scope of the wall.  For Section C, there are 14 rows and 31 columns.</p>';
+						break;
+					}
+					
+				}
+				elseif($_POST['t_section'] == 'D') {
+					if($_POST['t_row'] < 1 || $_POST['t_row'] > 14 || $_POST['t_column'] < 1 || $_POST['t_column'] > 7) {
+						$message = '<p class="alert alert-danger">This location is outside of the scope of the wall.  For Section D, there are 14 rows and 7 columns.</p>';
+						break;
+					}
+					
+				}
+				elseif($_POST['t_section'] == 'E') {
+					if($_POST['t_row'] < 1 || $_POST['t_row'] > 14 || $_POST['t_column'] < 1 || $_POST['t_column'] > 14) {
+						$message = '<p class="alert alert-danger">This location is outside of the scope of the wall.  For Section E, there are 14 rows and 14 columns.</p>';
+						break;
+					}
+					
+				}
+				elseif($_POST['t_section'] == 'F') {
+					if($_POST['t_row'] < 1 || $_POST['t_row'] > 14 || $_POST['t_column'] < 1 || $_POST['t_column'] > 6) {
+						$message = '<p class="alert alert-danger">This location is outside of the scope of the wall.  For Section F, there are 14 rows and 6 columns.</p>';
+						break;
+					}
+					
+				}
+				elseif($_POST['t_section'] == 'G') {
+					if($_POST['t_row'] < 1 || $_POST['t_row'] > 14 || $_POST['t_column'] < 1 || $_POST['t_column'] > 7) {
+						$message = '<p class="alert alert-danger">This location is outside of the scope of the wall.  For Section G, there are 14 rows and 7 columns.</p>';
+						break;
+					}
+					
+				}
+				elseif($_POST['t_section'] == 'H') {
+					if($_POST['t_row'] < 1 || $_POST['t_row'] > 14 || $_POST['t_column'] < 1 || $_POST['t_column'] > 14) {
+						$message = '<p class="alert alert-danger">This location is outside of the scope of the wall.  For Section H, there are 14 rows and 14 columns.</p>';
+						break;
+					}
+					
+				}
+				else {
+					$message = '<p class="alert alert-danger">Invalid Section.  Section can only be one of the following values: A, B, C, D, E, F, G, H.</p>';
+					break;
+					
+				}
+				
 				if(isset($_POST['id']) != '') {
-					$action = 'updated';
-					$q = "UPDATE tiles SET first = '$first', middle = '$middle', last = '$last', year = '$_POST[year]', t_section = '$_POST[t_section]', t_row = '$_POST[t_row]', t_column = '$_POST[t_column]' WHERE id = $_GET[id]";
-					$r = mysqli_query($dbc, $q);
+					$temp_q = "SELECT * FROM tiles WHERE t_section = '$_POST[t_section]' AND t_row = $_POST[t_row] AND t_column = $_POST[t_column]";
+					$temp_r = mysqli_query($dbc, $temp_q);
+					
+					$num = mysqli_num_rows($temp_r); //Amount of rows returned from query
+					
+					if($num == 1) {
+						
+						
+						
+					} else {
+					
+						$action = 'updated';
+						$q = "UPDATE tiles SET first = '$first', middle = '$middle', last = '$last', year = '$_POST[year]', t_section = '$_POST[t_section]', t_row = '$_POST[t_row]', t_column = '$_POST[t_column]' WHERE id = $_GET[id]";
+						$r = mysqli_query($dbc, $q);
+					}
 				
 				} else {
 					
-					$action = 'added';
+					$temp_q = "SELECT * FROM tiles WHERE t_section = '$_POST[t_section]' AND t_row = $_POST[t_row] AND t_column = $_POST[t_column]";
+					$temp_r = mysqli_query($dbc, $temp_q);
 					
-					$q = "INSERT INTO tiles (first, middle, last, year, t_section, t_row, t_column) VALUES ('$first', '$middle', '$last', '$_POST[year]', '$_POST[t_section]', '$_POST[t_row]', '$_POST[t_column]') ";
-					$r = mysqli_query($dbc, $q);
+					$num = mysqli_num_rows($temp_r); //Amount of rows returned from query
+					
+					if($num == 1) {
+						
+						
+						
+					} else {
+						$action = 'added';
+						
+						$q = "INSERT INTO tiles (first, middle, last, year, t_section, t_row, t_column) VALUES ('$first', '$middle', '$last', '$_POST[year]', '$_POST[t_section]', '$_POST[t_row]', '$_POST[t_column]') ";
+						$r = mysqli_query($dbc, $q);
+					}
 					
 				}
 				
@@ -153,7 +245,12 @@
 							
 					$message = '<p class="alert alert-success">Tile was '.$action.'!</p>';
 					
-				} else {
+				} elseif($num == 1) {
+					
+					$message = '<p class="alert alert-danger">Tile could not be added because that location is already occupied by another tile.</p>';
+				}
+				
+				else {
 					
 					$message = '<p class="alert alert-danger">Tile could not be '.$action.' because: '.mysqli_error($dbc).'</p>';
 					$message .= '<p class="alert alert-warning">Query: '.$q.'</p>';

@@ -53,20 +53,25 @@
    	
    				</div> 
    				
+   				<div style="margin-top:75px; margin-left:430px;">
    				 <?php
    				
 	            while($results = mysqli_fetch_array($r)){
 	            // $results = mysql_fetch_array($raw_results) puts data from database into array, while it's valid it does the loop
 	             
 	             ?>
-	             <div class="list1">
+	             <div class="list1";>
 	            	<a class="list-group-item" href="tile_info.php?t_section=<?php echo $results['t_section']; ?>&t_row=<?php echo $results['t_row']; ?>&t_column=<?php echo $results['t_column']; ?>">
 						<h4 class="list-group-item-heading">Name: <?php echo $results['first']." ".$results['middle']." ".$results['last']."  (Year: ".$results['year'].")"; ?></h4>
 					<!--<p class="list-group-item-text"><?php //echo $blurb; ?></p> -->
 					</a>
 				</div>
 				
-	          <?php  }
+	          <?php  } ?>
+	          
+	          </div>
+	          
+	          <?php
 	             
 	        }
 	        else{ // if there is no matching rows do following

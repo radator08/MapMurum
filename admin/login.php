@@ -19,9 +19,7 @@ if($_POST) {
 		$_SESSION['username'] = $_POST['email'];
 		header('Location: index.php');
 		
-	} else {
-		echo "The credentials you have entered are incorrect.";
-	}
+	} 
 	
 }
 	
@@ -96,12 +94,20 @@ if($_POST) {
 				
 			
 			</div> <!-- END Container -->
+			
+			<?php if($_POST && $num != 1)  { ?>
+				
+				<p><b><font color="Red" style="margin-left:480px;"><?php echo "The credentials you have entered are incorrect."; ?>
+					</font></b></p>
+			
+			<?php } ?>
 		
 		</div> <!-- END wrap -->
 		
 		<?php //include(D_TEMPLATE.'/footer.php'); //Page Footer ?>
 		
 		<?php //if($debug == 1) { include('widgets/debug.php'); } ?>
+		
 		
 	</body>
 

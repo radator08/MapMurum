@@ -1,5 +1,4 @@
 
- 
  <div class="row">
  	<form method="post">
         <div class="col-md-1 btn-group">
@@ -127,9 +126,10 @@
    
    <div class="button1">
    	
-   		<button type="button" class="btn btn-default" onclick="location.href = 'index.php'">Go Back</button>
+   		<button type="button" class="go_back" onclick="location.href = 'index.php'">Go Back</button>
    	
    </div>
+   
 
 <style>
 
