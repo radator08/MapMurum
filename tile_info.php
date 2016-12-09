@@ -125,7 +125,7 @@
  .f { 
    position: absolute; 
    top: 240px; 
-   left: 105px; 
+   left: 85px; 
    width: 100%;
  }
 </style>

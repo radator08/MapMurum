@@ -134,6 +134,12 @@
 				$middle = mysqli_real_escape_string($dbc, $_POST['middle']);
 				$last = mysqli_real_escape_string($dbc, $_POST['last']);
 				
+				if ($first == '' || $last == '') {
+					
+					$message = '<p class="alert alert-danger">First name and last name are compulsory fields.  Fill all of them.</p>';
+					break;
+				}
+				
 				if ($_POST['year'] == '' || $_POST['t_section'] == '' || $_POST['t_row'] == '' || $_POST['t_column'] == '') {
 					
 					$message = '<p class="alert alert-danger">Graduation Year, Section, Row and Column are compulsory fields.  Fill all of them.</p>';
@@ -204,7 +210,7 @@
 				}
 				
 				if(isset($_POST['id']) != '') {
-					$temp_q = "SELECT * FROM tiles WHERE t_section = '$_POST[t_section]' AND t_row = $_POST[t_row] AND t_column = $_POST[t_column]";
+				/**	$temp_q = "SELECT * FROM tiles WHERE t_section = '$_POST[t_section]' AND t_row = $_POST[t_row] AND t_column = $_POST[t_column]";
 					$temp_r = mysqli_query($dbc, $temp_q);
 					
 					$num = mysqli_num_rows($temp_r); //Amount of rows returned from query
@@ -218,7 +224,11 @@
 						$action = 'updated';
 						$q = "UPDATE tiles SET first = '$first', middle = '$middle', last = '$last', year = '$_POST[year]', t_section = '$_POST[t_section]', t_row = '$_POST[t_row]', t_column = '$_POST[t_column]' WHERE id = $_GET[id]";
 						$r = mysqli_query($dbc, $q);
-					}
+					} */
+					
+						$action = 'updated';
+						$q = "UPDATE tiles SET first = '$first', middle = '$middle', last = '$last', year = '$_POST[year]', t_section = '$_POST[t_section]', t_row = '$_POST[t_row]', t_column = '$_POST[t_column]' WHERE id = $_GET[id]";
+						$r = mysqli_query($dbc, $q);
 				
 				} else {
 					
