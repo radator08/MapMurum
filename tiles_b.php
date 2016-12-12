@@ -331,7 +331,7 @@
    position: absolute; 
    width: 100%; /* for IE 6 */
    left: 580px;
-   top: 450px;
+   top: 600px;
 }
 
 
@@ -339,7 +339,7 @@
    position: absolute; 
    width: 100%; /* for IE 6 */
    left: 450px;
-   top: 350px;
+   top: 500px;
 }
 	
 

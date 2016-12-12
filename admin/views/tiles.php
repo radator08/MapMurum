@@ -2,7 +2,7 @@
 
 <div class="row">
 	
-	<div class="col-md-4">
+	<div class="col-md-5">
 	
 		<div class="list-group">
 			
@@ -48,7 +48,7 @@
 		
 	</div>
 	
-	<div class="col-md-8">
+	<div class="col-md-7">
 		
 		<?php if(isset($message)) { echo $message; } ?>
 
