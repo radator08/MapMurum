@@ -17,7 +17,8 @@ if(!isset($_SESSION['username'])) {
 
 	<head>
 	
-		<title> Admin Panel | MapMurum<!--<?php echo $page['title'].' | '.$site_title; ?>--> </title>
+		<!--<?php echo $page['title'].' | '.$site_title; ?>--> 
+		<title> Admin Panel | MapMurum</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 		<?php include('config/css.php'); ?>
